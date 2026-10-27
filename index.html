@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="am">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14532d">
+<title>Suku.com — 30-Day Build Planner</title>
+<style>
+:root{--green:#14532d;--green2:#166534;--mint:#dcfce7;--lime:#bbf7d0;--ink:#17231c;--muted:#718078;--line:#e4ebe6;--paper:#f6f9f6;--white:#fff;--amber:#f59e0b;--shadow:0 12px 35px rgba(22,57,35,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Noto Sans Ethiopic","Abyssinica SIL",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+button,input{font:inherit}button{cursor:pointer}.app{max-width:1240px;margin:auto;padding:26px 22px 48px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:26px}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;background:var(--green);border-radius:15px;display:grid;place-items:center;color:white;font-size:23px;font-weight:800;box-shadow:0 8px 18px #14532d26}.brand h1{font-size:19px;margin:0;letter-spacing:-.4px}.brand p{font-size:12px;color:var(--muted);margin:2px 0 0}.top-actions{display:flex;gap:9px;align-items:center}.btn{border:1px solid var(--line);background:white;border-radius:12px;padding:10px 14px;color:var(--ink);font-weight:650;font-size:13px}.btn:hover{border-color:#9bb8a3}.btn.primary{background:var(--green);color:white;border-color:var(--green)}.btn.ghost{background:transparent}
+.hero{background:linear-gradient(120deg,#123e27,#17643a 75%,#22824b);color:white;border-radius:25px;padding:30px;display:grid;grid-template-columns:1.45fr .75fr;gap:25px;align-items:center;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:310px;height:310px;border:1px solid #ffffff1b;border-radius:50%;right:4%;top:-170px;box-shadow:0 0 0 35px #ffffff08,0 0 0 70px #ffffff06}.eyebrow{text-transform:uppercase;letter-spacing:1.7px;font-size:10px;font-weight:800;color:#b8f5ca}.hero h2{font-size:clamp(25px,3.5vw,39px);line-height:1.15;letter-spacing:-1.1px;margin:12px 0 11px;max-width:620px}.hero p{margin:0;color:#d8f0df;max-width:610px;font-size:14px}.date-range{display:inline-flex;align-items:center;gap:8px;background:#ffffff14;border:1px solid #ffffff25;padding:8px 11px;border-radius:10px;font-size:12px;margin-top:18px}.progress-card{position:relative;z-index:1;background:#ffffff12;border:1px solid #ffffff25;border-radius:20px;padding:22px}.progress-head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}.progress-head span{font-size:12px;color:#d8f0df}.percent{font-size:39px;line-height:1;font-weight:800;letter-spacing:-1.8px}.progress-track{height:8px;border-radius:99px;background:#ffffff25;overflow:hidden;margin:17px 0 12px}.progress-fill{height:100%;width:0;background:#b9f6ca;border-radius:99px;transition:width .25s}.progress-foot{display:flex;justify-content:space-between;color:#d8f0df;font-size:11px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 25px}.stat{background:white;border:1px solid var(--line);border-radius:17px;padding:17px 18px;display:flex;align-items:center;gap:13px}.stat-icon{width:40px;height:40px;border-radius:13px;background:#eef8f0;color:var(--green);display:grid;place-items:center;font-size:19px}.stat .label{color:var(--muted);font-size:11px}.stat strong{display:block;font-size:22px;line-height:1.25;margin-top:2px;letter-spacing:-.5px}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:0 0 13px}.section-head h3{font-size:18px;margin:0;letter-spacing:-.4px}.section-head p{font-size:12px;color:var(--muted);margin:4px 0 0}.workspace{display:grid;grid-template-columns:1.12fr .88fr;gap:18px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:20px;box-shadow:0 4px 18px #183d2510;overflow:hidden}.panel-head{padding:19px 20px 15px;display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--line)}.panel-head h3{font-size:15px;margin:0}.panel-head p{font-size:11px;color:var(--muted);margin:3px 0 0}.month-nav{display:flex;align-items:center;gap:8px}.month-nav strong{font-size:12px;min-width:100px;text-align:center}.arrow{width:30px;height:30px;border:1px solid var(--line);background:white;border-radius:9px;font-size:16px;color:var(--ink)}.calendar{padding:14px 17px 18px}.weekdays,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.weekdays div{text-align:center;color:var(--muted);font-size:10px;padding:7px 0;font-weight:700}.day{border:1px solid transparent;background:#f7faf7;border-radius:11px;min-height:61px;padding:7px 5px;text-align:left;position:relative;color:var(--ink);transition:.15s}.day .num{font-size:12px;font-weight:750}.day .dot{display:block;width:5px;height:5px;background:#cbd5ce;border-radius:50%;margin-top:7px}.day .mini{font-size:9px;color:var(--muted);display:block;margin-top:3px}.day.inactive{opacity:.35;cursor:default}.day.planned{background:#f0f8f1}.day.selected{border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green);background:#e8f6eb}.day.today .num:after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#e89b23;margin:0 0 2px 4px}.day.done{background:#dff5e5}.day.done .dot{background:#16803d}.day:hover:not(.inactive){border-color:#a5c5ad}.calendar-legend{display:flex;gap:13px;flex-wrap:wrap;padding:0 18px 17px;color:var(--muted);font-size:10px}.legend-item{display:flex;align-items:center;gap:6px}.legend-dot{width:8px;height:8px;border-radius:3px;background:#f0f8f1;border:1px solid #d7e9da}.legend-dot.completed{background:#16803d}.legend-dot.today{background:#e89b23}
+.task-panel{position:sticky;top:16px}.selected-date{display:flex;align-items:center;gap:12px}.date-badge{background:#e8f6eb;color:var(--green);border-radius:13px;padding:9px 11px;text-align:center;min-width:52px}.date-badge b{font-size:21px;display:block;line-height:1.1}.date-badge span{font-size:9px;font-weight:800;text-transform:uppercase}.day-title{font-size:14px;font-weight:800}.day-subtitle{font-size:11px;color:var(--muted);margin-top:2px}.phase-pill{font-size:10px;border-radius:99px;background:#f0f5f1;color:var(--green);padding:6px 9px;font-weight:750;white-space:nowrap}
+.task-body{padding:19px 20px}.focus-box{padding:14px 15px;border-radius:14px;background:#f5faf6;border:1px solid #e3f0e5;margin-bottom:18px}.focus-box label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:800}.focus-box p{font-size:13px;font-weight:650;margin:5px 0 0}.task-list{display:grid;gap:10px}.task{display:flex;align-items:flex-start;gap:11px;padding:12px;border:1px solid var(--line);border-radius:13px;transition:.15s}.task:hover{border-color:#b4d0bb}.task input{appearance:none;flex:0 0 19px;width:19px;height:19px;border:1.5px solid #c2cec5;border-radius:6px;margin:1px 0 0;cursor:pointer;background:white}.task input:checked{background:var(--green);border-color:var(--green)}.task input:checked:after{content:"✓";display:block;color:white;text-align:center;font-size:13px;line-height:17px;font-weight:800}.task-content{flex:1;min-width:0}.task-title{font-size:12px;font-weight:700;display:block}.task-desc{font-size:11px;color:var(--muted);margin-top:4px;display:block;line-height:1.45}.task.checked{background:#f8fbf8}.task.checked .task-title{text-decoration:line-through;color:#809087}.task.checked .task-desc{opacity:.7}.task-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}.task-foot strong{color:var(--green)}.empty-state{text-align:center;padding:28px 15px;color:var(--muted);font-size:12px}.bottom-note{display:flex;gap:11px;align-items:flex-start;background:#fff9e9;border:1px solid #f5e6bd;border-radius:15px;padding:14px 16px;margin-top:18px;color:#70521a;font-size:12px}.bottom-note b{display:block;margin-bottom:3px}.footer{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:10px;margin-top:24px;padding:0 3px}.footer a{color:var(--green)}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:#173e28;color:white;padding:11px 17px;border-radius:12px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;box-shadow:var(--shadow);z-index:10}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.progress-card{max-width:440px}.workspace{grid-template-columns:1fr}.task-panel{position:static}.topbar{align-items:flex-start}.stats{gap:9px}.stat{padding:13px;gap:9px}.stat-icon{width:34px;height:34px}.stat strong{font-size:19px}}
+@media(max-width:560px){.app{padding:16px 12px 32px}.topbar{margin-bottom:17px}.brand h1{font-size:16px}.logo{width:40px;height:40px}.top-actions .btn{padding:9px 10px;font-size:11px}.hero{padding:23px 20px;border-radius:20px}.hero h2{font-size:29px}.hero p{font-size:12px}.progress-card{padding:17px}.stats{grid-template-columns:1fr;gap:8px;margin:12px 0 21px}.stat{padding:11px 14px}.stat strong{font-size:18px}.stat-icon{width:35px;height:35px}.section-head h3{font-size:16px}.panel-head{padding:15px 13px}.calendar{padding:10px 9px 14px}.weekdays,.days{gap:3px}.day{min-height:52px;padding:5px 4px;border-radius:8px}.day .num{font-size:11px}.day .mini{font-size:8px}.weekdays div{font-size:9px}.month-nav strong{min-width:75px;font-size:10px}.calendar-legend{padding:0 12px 14px;gap:9px}.task-body{padding:15px 13px}.phase-pill{display:none}.footer{flex-direction:column}.date-range{font-size:10px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">S</div>
+      <div><h1>Suku.com <span style="color:#8b9b90;font-weight:500">/ Build Planner</span></h1><p>30 ቀን · አንድ ግብ · ተግባራዊ እርምጃ</p></div>
+    </div>
+    <div class="top-actions">
+      <button class="btn ghost" id="todayBtn">ወደ ዛሬ</button>
+      <button class="btn" id="resetBtn">እንደገና ጀምር</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">YOUR NEXT 30 DAYS START NOW</div>
+      <h2>ከሀሳብ ወደ እውነተኛ ምርት።</h2>
+      <p>Suku.com ን በተከታታይ በመገንባት፣ በመፈተሽ እና ለመጀመሪያ ተጠቃሚዎች በማቅረብ ላይ አተኩር። በየቀኑ የተመደበውን ሥራ ጨርስ እና ምልክት አድርግ።</p>
+      <div class="date-range"><span>▦</span><span id="rangeText">Oct 26 – Nov 24, 2026</span><span>·</span><span>30 ቀናት</span></div>
+    </div>
+    <div class="progress-card">
+      <div class="progress-head"><div><span>አጠቃላይ እድገት</span><div class="percent" id="percent">0%</div></div><div style="font-size:28px">🎯</div></div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-foot"><span id="completedText">0 ተግባራት ተጠናቀዋል</span><span id="totalText">90 ተግባራት</span></div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><div class="stat-icon">✓</div><div><div class="label">የተጠናቀቁ ቀናት</div><strong id="daysDone">0 / 30</strong></div></div>
+    <div class="stat"><div class="stat-icon">⚡</div><div><div class="label">በቀጣይ የሚሠራበት ቀን</div><strong id="nextDay">ቀን 1</strong></div></div>
+    <div class="stat"><div class="stat-icon">✦</div><div><div class="label">የአሁኑ የሥራ ደረጃ</div><strong id="phaseNow" style="font-size:16px">መሠረት</strong></div></div>
+  </section>
+
+  <div class="section-head">
+    <div><h3>የ30 ቀን ካላንደር</h3><p>ቀን ምረጥ፤ የዚያን ቀን ተግባራት አጠናቅቅ።</p></div>
+  </div>
+  <main class="workspace">
+    <section class="panel">
+      <div class="panel-head">
+        <div><h3>የሥራ ካላንደር</h3><p>የተመደቡ ቀናትን ተከታተል</p></div>
+        <div class="month-nav"><button class="arrow" id="prevMonth" aria-label="Previous month">‹</button><strong id="monthLabel">October 2026</strong><button class="arrow" id="nextMonth" aria-label="Next month">›</button></div>
+      </div>
+      <div class="calendar">
+        <div class="weekdays"><div>ሰኞ</div><div>ማክሰ</div><div>ረቡዕ</div><div>ሐሙስ</div><div>ዓርብ</div><div>ቅዳሜ</div><div>እሁድ</div></div>
+        <div class="days" id="calendarDays"></div>
+      </div>
+      <div class="calendar-legend"><span class="legend-item"><i class="legend-dot"></i> የታቀደ</span><span class="legend-item"><i class="legend-dot completed"></i> ተጠናቋል</span><span class="legend-item"><i class="legend-dot today"></i> ዛሬ</span></div>
+    </section>
+    <section class="panel task-panel" id="taskPanel">
+      <div class="panel-head">
+        <div class="selected-date"><div class="date-badge"><b id="dateNumber">26</b><span id="dateMonth">OCT</span></div><div><div class="day-title" id="dayHeading">ቀን 1 · የፕሮጀክት መሠረት</div><div class="day-subtitle" id="daySubtitle">ሰኞ, ጥቅምት 26</div></div></div>
+        <span class="phase-pill" id="phasePill">ሳምንት 1</span>
+      </div>
+      <div class="task-body">
+        <div class="focus-box"><label>የዛሬ ዋና ግብ</label><p id="focusText">የፕሮጀክቱን ወሰን ግልጽ አድርግ።</p></div>
+        <div class="task-list" id="taskList"></div>
+        <div class="task-foot"><span id="dayProgressText">የቀኑ እድገት</span><strong id="dayProgress">0 / 3</strong></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="bottom-note"><span style="font-size:19px">💡</span><div><b>የ30 ቀን ደንብ</b>በአንድ ጊዜ አንድ ዋና ግብ ብቻ። አዲስ ፕሮጀክት አትጀምር፤ ችግሮችን በዝርዝር ጻፍ፣ በተመደበው ቀን ፍታቸው። እድገትህ በዚህ መሣሪያ ውስጥ በዚህ መሣሪያ ላይ ይቀመጣል።</div></div>
+  <footer class="footer"><span>© Suku.com · የግል የሥራ እቅድህ</span><span>መረጃህ በዚህ ብራውዘር ውስጥ ብቻ ይቀመጣል (local storage).</span></footer>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const START = new Date(2026, 9, 26); // October 26, 2026
+const DAY_MS = 86400000;
+const plans = [
+["የፕሮጀክት መሠረት","የSuku.com ወሰንና የ30 ቀን ግብ ግልጽ አድርግ", "መሠረት",["GitHub ላይ ያለውን የመጨረሻ ኮድ አረጋግጥ።","የአሁኑን ባህሪያትና የተበላሹ ነገሮችን ዝርዝር ጻፍ።","ለመጀመሪያ ስሪት የሚያስፈልጉትን ብቻ ለይ።"]],
+["የኮድ ደህንነት","የሥራ አካባቢውን አዘጋጅና ባክአፕ አድርግ","መሠረት",["የአሁኑን ቅርንጫፍ commit አድርግ እና backup አዘጋጅ።","npm install እና npm run build አስኪድ።","የሚደጋገሙ የbuild/typecheck ስህተቶችን ጻፍ።"]],
+["የችግር ምደባ","የተጠቃሚ መንገዶችን አስቀድሞ ለይ","መሠረት",["ገዢ፣ ሻጭና admin የሚያደርጉትን ዝርዝር ጻፍ።","Critical / High / Medium ብለህ ችግሮችን ምድብ።","የ30 ቀን ሥራ ቅደም ተከተል አስቀምጥ።"]],
+["የመግቢያ ሂደት","የመግቢያና የመለያ ፍጠር ሂደት ፈትሽ","መሠረት",["አዲስ ተጠቃሚ መለያ መፍጠር ሞክር።","Telegram OTP መላክ፣ ማረጋገጥና ስህተት ሁኔታዎችን ፈትሽ።","Logout፣ session እና protected pages አረጋግጥ።"]],
+["የዳታቤዝ ጤና","የዳታቤዝ አስፈላጊ ሂደቶችን አረጋግጥ","መሠረት",["Database setup እና schema አረጋግጥ።","User፣ listing፣ order ግንኙነቶች ትክክል መሆናቸውን ፈትሽ።","የስህተት መልዕክቶችንና የውድቀት ሁኔታዎችን አስተካክል።"]],
+["የሻጭ መመዝገብ","ሻጭ ምርት የሚያስገባበትን ሂደት ፈትሽ","የሻጭ ስርዓት",["Seller profile መፍጠርና ማሻሻል ሞክር።","ሻጭ ምርት መጨመር፣ ማሻሻልና ማጥፋት እንደሚችል ፈትሽ።","የሻጭ ፈቃድ እና የሌላ ሰው ዳታ መዳረሻ አረጋግጥ።"]],
+["ምርት ዝርዝር","የምርት መረጃ ጥራትን አሻሽል","የሻጭ ስርዓት",["የምርት ስም፣ ዋጋ፣ ምድብና መግለጫ አረጋግጥ።","የምስል ማስገባት፣ መጠን ገደብና ስህተት ሁኔታ ፈትሽ።","ባዶ መረጃና የተሳሳተ ዋጋ እንዳይገባ validation ጨምር።"]],
+["የምርት ማረጋገጫ","የሻጭ ምርት ግምገማና ደረጃ አስተካክል","የሻጭ ስርዓት",["የምርት ሁኔታዎችን (pending/active/rejected) ፈትሽ።","የሻጭ የራሱን ምርቶች ብቻ ማስተዳደር መቻሉን አረጋግጥ።","የተሳሳተ ወይም የሚያሳስት ይዘት ለመቆጣጠር መንገድ አዘጋጅ።"]],
+["ፍለጋና ምድቦች","የገዢ ምርት ፍለጋን አሻሽል","የገዢ ልምድ",["የፍለጋ ቃል፣ ምድብና ዋጋ ማጣሪያ ፈትሽ።","የውጤት ባዶ ሁኔታና ምንም አለመገኘት አሳይ።","የፍለጋ ፍጥነትና የስህተት ሁኔታ ፈትሽ።"]],
+["የምርት ገጽ","የምርት ዝርዝር ገጽ ትክክለኛነት አረጋግጥ","የገዢ ልምድ",["የምርት ምስል፣ ዋጋ፣ ሻጭና መግለጫ አረጋግጥ።","የተጠፋ ወይም የማይገኝ ምርት ሁኔታ ፈትሽ።","የሞባይል ስክሪን እና የኋላ ተመለስ አሰሳ ፈትሽ።"]],
+["የገዢ ሂደት","ገዢ ከምርት ወደ ሻጭ የሚደርስበትን መንገድ ፈትሽ","የገዢ ልምድ",["የምርት ጥያቄ/ግዢ መጀመር ሞክር።","የሻጭ መረጃና የግንኙነት መንገድ ትክክል መሆኑን አረጋግጥ።","ተጠቃሚ የተሳሳተ ምርት ሲመርጥ መመለስ መቻሉን ፈትሽ።"]],
+["የሳምንት ግምገማ","የሻጭና የገዢ ዋና ሂደቶችን አጠቃልል","የገዢ ልምድ",["የሻጭ ምርት ማስገባትን ከመጀመሪያ እስከ መጨረሻ ሞክር።","የገዢ ፍለጋና የምርት ገጽን ሞክር።","የቀሩትን ችግሮች ለቀጣይ ሳምንት አስቀምጥ።"]],
+["የክፍያ ማስረጃ","የባንክ/Telebirr የክፍያ ማስረጃ ሂደት ፈትሽ","ትዕዛዝና ክፍያ",["ገዢ የግብይት ቁጥር ወይም የክፍያ ማስረጃ ማስገባት ሞክር።","የማስረጃ ፎቶ ማስገባት፣ የፋይል መጠንና የስህተት ሁኔታ ፈትሽ።","ክፍያ በራስ-ሰር እንደተረጋገጠ እንዳይቆጠር አረጋግጥ።"]],
+["የሻጭ ማረጋገጫ","ሻጭ ክፍያ ማረጋገጥና ማስተዳደር ይችል?","ትዕዛዝና ክፍያ",["ሻጭ የማስረጃ ዝርዝር ማየት መቻሉን ፈትሽ።","ተቀብሏል/አልተቀበለም ውሳኔ ሂደት ሞክር።","ማን ውሳኔ እንደሰጠና መቼ እንደሆነ መመዝገቡን አረጋግጥ።"]],
+["የትዕዛዝ ሁኔታ","የትዕዛዝ ሁኔታና የማስረከቢያ ሂደት ፈትሽ","ትዕዛዝና ክፍያ",["የትዕዛዝ ሁኔታዎች በትክክል መቀየራቸውን ፈትሽ።","የመውሰጃ ቦታ/ማድረስ መረጃ አረጋግጥ።","ገዢና ሻጭ የትዕዛዙን ሁኔታ ማየት እንደሚችሉ ፈትሽ።"]],
+["የማስታወቂያ መልዕክቶች","የስህተትና የሁኔታ መልዕክቶችን አሻሽል","ትዕዛዝና ክፍያ",["ለተሳካ/ያልተሳካ እርምጃ ግልጽ መልዕክት አሳይ።","ድጋሚ ጠቅ ማድረግ ድግግሞሽ ትዕዛዝ እንዳይፈጥር ፈትሽ።","አስፈላጊ የስህተት መልዕክቶች ለተጠቃሚ ግልጽ እንዲሆኑ አድርግ።"]],
+["Admin መቆጣጠሪያ","የadmin የክትትል ሂደቶችን ፈትሽ","አስተዳደር",["Admin መግቢያና ፈቃድ በserver በኩል መፈተሹን አረጋግጥ።","የተጠቃሚ፣ ምርትና ሪፖርት ማየት ሞክር።","የadmin ድርጊቶች መመዝገባቸውን ፈትሽ።"]],
+["የደህንነት ግምገማ","የፈቃድና የዳታ ጥበቃ ችግሮችን ፈትሽ","አስተዳደር",["የሌላ ተጠቃሚ መረጃ በURL በመቀየር ማየት እንደማይቻል ፈትሽ።","የsecret/API key መረጃ በclient ኮድ ውስጥ እንዳልተጋለጠ አረጋግጥ።","የrate limit፣ input validationና የፋይል ማስገባት ጥበቃ ፈትሽ።"]],
+["ሞባይል ዲዛይን","ዋና ገጾችን በስልክ ላይ አሻሽል","የጥራት ማሻሻያ",["Home፣ Search፣ Product ገጾችን በትንሽ ስክሪን ፈትሽ።","Seller እና Admin ገጾችን በሞባይል ፈትሽ።","ተጫን የማይቻሉ ትንንሽ አዝራሮችንና overflow አስተካክል።"]],
+["የአሰሳ ጥራት","የማስጫኛ፣ ባዶ እና የስህተት ሁኔታዎችን አሻሽል","የጥራት ማሻሻያ",["Loading skeleton/spinner ለሚያስፈልጉ ገጾች አስተካክል።","Empty state እና error state በግልጽ መልኩ አሳይ።","የአሰሳ መንገዶችንና የተሳሳቱ ሊንኮችን ፈትሽ።"]],
+["የቋንቋና ይዘት ጥራት","የጽሑፍና የቋንቋ ልምድን አረጋግጥ","የጥራት ማሻሻያ",["የእንግሊዝኛ ጽሑፎችን ሰዋሰውና ግልጽነት ፈትሽ።","Amharic ካለ የቋንቋ መቀየሪያና የጽሑፍ መቆየት ፈትሽ።","የዋጋ፣ ቀንና ስልክ ቅርጸት ተመሳሳይ እንዲሆን አድርግ።"]],
+["የሳምንት ግምገማ","የትዕዛዝ፣ ደህንነትና ዲዛይን ሁኔታ ገምግም","የጥራት ማሻሻያ",["ከገዢ እስከ ሻጭ የሚሄድ ሙሉ ሂደት ሞክር።","የደህንነትና የከፍተኛ ቅድሚያ ችግሮችን አስተካክል።","ለመጨረሻ ሙከራ የቀሩ ሥራዎችን ወስን።"]],
+["ሙሉ ሂደት ሙከራ","ከመለያ እስከ ትዕዛዝ የሚሄድ ሙከራ አድርግ","ሙከራና ማስጀመር",["አዲስ ገዢ መለያ ፍጠር፣ ፈልግና ምርት ምረጥ።","ሻጭ መለያ ፍጠር፣ ምርት አስገባና ትዕዛዝ አስተዳድር።","የክፍያ ማስረጃና የሻጭ ማረጋገጫ ሂደት ሞክር።"]],
+["Bug Bash","በስልክና በኮምፒውተር የተጠቃሚ ሙከራ አድርግ","ሙከራና ማስጀመር",["ቢያንስ 3 ሰዎች ሳይመሩ ድረ-ገጹን እንዲሞክሩ አድርግ።","የሚያጋጥማቸውን ችግር በቀጥታ መዝግብ።","የማስጀመር ቅድሚያ ያላቸውን ስህተቶች አስተካክል።"]],
+["ፍጥነትና ስህተት","የbuild፣ typecheckና አስፈላጊ ሙከራዎችን አስኪድ","ሙከራና ማስጀመር",["npm run typecheck አስኪድ እና የሚታዩ ስህተቶችን ፍታ።","npm run build አስኪድ።","የአስፈላጊ ሂደቶች regression test አድርግ።"]],
+["የማስጀመር ዝግጅት","የproduction አካባቢና መረጃ አዘጋጅ","ሙከራና ማስጀመር",["Production environment variables በደህንነት አስቀምጥ።","Database backupና የመመለሻ እቅድ አዘጋጅ።","Domain፣ HTTPS፣ ምስሎችና የማስገቢያ ቅጾች አረጋግጥ።"]],
+["Deployment","የመጨረሻውን ስሪት በstaging/production ላይ አስቀምጥ","ማስጀመር",["የመጨረሻ ኮድ commit አድርግ እና build አረጋግጥ።","Deployment አድርግ እና የserver logs ፈትሽ።","የመግቢያ፣ ፍለጋ፣ ምርትና ትዕዛዝ ሂደቶችን live ሞክር።"]],
+["የመጀመሪያ ሻጮች","በትንሽ ቡድን ሻጮችን አስገባ","ማስጀመር",["5–10 ተገቢ ሻጮችን አነጋግር።","ምርቶቻቸውን በትክክለኛ ምስልና ዋጋ እንዲያስገቡ እርዳ።","የሻጮችን ግብረመልስና ችግር መዝግብ።"]],
+["የመጀመሪያ ገዢዎች","የመጀመሪያ ገዢዎችን አስገባና ምላሽ ሰብስብ","ማስጀመር",["የምርት ምሳሌዎችን በማህበራዊ ሚዲያ አጋራ።","5 ወይም ከዚያ በላይ የሚሆኑ የመጀመሪያ ገዢዎችን አስተናግድ።","የተጠቃሚ ጥያቄዎችና የግዢ መሰናክሎች መዝግብ።"]],
+["የመጨረሻ ግምገማ","30 ቀናትን ገምግምና ቀጣዩን የእድገት ደረጃ ወስን","ማስጀመር",["የተጠናቀቁ ሥራዎችንና የቀሩትን ጉዳዮች ዘርዝር።","ከሻጮችና ገዢዎች የተሰበሰበውን ግብረመልስ አጠቃልል።","ለቀጣዮቹ 30 ቀናት ከሁሉ በላይ የሚያስፈልጉ 3 ግቦችን ምረጥ።"]]
+];
+
+const storeKey = "suku30dayplanner-v1";
+let state = {done:{}, selected:0, month:new Date(2026,9,1)};
+try { const saved=JSON.parse(localStorage.getItem(storeKey)||"null"); if(saved && saved.done) state.done=saved.done; } catch(e){}
+let selected = 0;
+let shownMonth = new Date(2026,9,1);
+const $ = id => document.getElementById(id);
+const fmt = (d, opts) => d.toLocaleDateString("en-US",opts);
+const dateAt = i => new Date(START.getFullYear(),START.getMonth(),START.getDate()+i);
+const dateKey = i => {const d=dateAt(i);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`};
+const dayNamesAm=["እሁድ","ሰኞ","ማክሰኞ","ረቡዕ","ሐሙስ","ዓርብ","ቅዳሜ"];
+const monthNamesAm=["ጥር","የካቲት","መጋቢት","ሚያዝያ","ግንቦት","ሰኔ","ሐምሌ","ነሐሴ","መስከረም","ጥቅምት","ኅዳር","ታኅሣሥ"];
+const phases=["መሠረት","የሻጭ ስርዓት","የገዢ ልምድ","ትዕዛዝና ክፍያ","አስተዳደር","የጥራት ማሻሻያ","ሙከራና ማስጀመር","ማስጀመር"];
+function save(){localStorage.setItem(storeKey,JSON.stringify({done:state.done}));}
+function dayDone(i){return plans[i][3].every((_,j)=>state.done[`${i}-${j}`]);}
+function counts(){let all=0,complete=0,days=0;plans.forEach((p,i)=>{all+=p[3].length;p[3].forEach((_,j)=>{if(state.done[`${i}-${j}`])complete++});if(dayDone(i))days++});return {all,complete,days};}
+function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200);}
+function renderStats(){const c=counts();$("percent").textContent=Math.round(c.complete/c.all*100)+"%";$("progressFill").style.width=(c.complete/c.all*100)+"%";$("completedText").textContent=`${c.complete} ተግባራት ተጠናቀዋል`;$("totalText").textContent=`${c.all} ተግባራት`;$("daysDone").textContent=`${c.days} / 30`;let next=plans.findIndex((p,i)=>!dayDone(i));$("nextDay").textContent=next<0?"ተጠናቋል":`ቀን ${next+1}`;$("phaseNow").textContent=next<0?"ተጠናቋል":plans[next][2];}
+function renderCalendar(){
+ const year=shownMonth.getFullYear(), month=shownMonth.getMonth();$("monthLabel").textContent=shownMonth.toLocaleDateString("en-US",{month:"long",year:"numeric"});
+ const first=new Date(year,month,1);let offset=(first.getDay()+6)%7;const daysInMonth=new Date(year,month+1,0).getDate();const host=$("calendarDays");host.innerHTML="";
+ for(let cell=0;cell<42;cell++){let n=cell-offset+1;let date=new Date(year,month,n);let inMonth=n>0&&n<=daysInMonth;let idx=Math.round((dateAt(0)-new Date(date.getFullYear(),date.getMonth(),date.getDate()))/DAY_MS)*-1; // replaced below with timestamp difference
+ idx=Math.round((new Date(date.getFullYear(),date.getMonth(),date.getDate())-new Date(START.getFullYear(),START.getMonth(),START.getDate()))/DAY_MS);
+ const inPlan=idx>=0&&idx<30;
+ const b=document.createElement("button");b.className="day"+(!inMonth?" inactive":"")+(inPlan?" planned":"")+(inPlan&&dayDone(idx)?" done":"")+(inPlan&&idx===selected?" selected":"")+(inPlan&&dateKey(idx)===dateKey(Math.max(0,Math.min(29,Math.round((new Date()-START)/DAY_MS))))?" today":"");
+ b.disabled=!inMonth;b.innerHTML=`<span class="num">${date.getDate()}</span>${inPlan?`<span class="dot"></span><span class="mini">${dayDone(idx)?"ተጠናቋል":`ቀን ${idx+1}`}</span>`:""}`;
+ if(inPlan)b.addEventListener("click",()=>{selected=idx;renderAll();});host.appendChild(b);
+ }
+}
+function renderTasks(){
+ const p=plans[selected],d=dateAt(selected);$("dateNumber").textContent=d.getDate();$("dateMonth").textContent=fmt(d,{month:"short"}).toUpperCase();$("dayHeading").textContent=`ቀን ${selected+1} · ${p[0]}`;$("daySubtitle").textContent=`${dayNamesAm[d.getDay()]}, ${monthNamesAm[d.getMonth()]} ${d.getDate()}`;$("phasePill").textContent=p[2];$("focusText").textContent=p[1];
+ const list=$("taskList");list.innerHTML="";p[3].forEach((task,j)=>{const key=`${selected}-${j}`;const label=document.createElement("label");label.className="task"+(state.done[key]?" checked":"");const cb=document.createElement("input");cb.type="checkbox";cb.checked=!!state.done[key];cb.addEventListener("change",()=>{state.done[key]=cb.checked;save();renderAll();toast(cb.checked?"ጥሩ ሥራ! ተግባሩ ተጠናቋል።":"ተግባሩ ወደ ያልተጠናቀቀ ተመልሷል።")});const content=document.createElement("span");content.className="task-content";content.innerHTML=`<span class="task-title"></span><span class="task-desc"></span>`;content.querySelector(".task-title").textContent=task;content.querySelector(".task-desc").textContent=`የቀን ${selected+1} ተግባር ${j+1}`;label.append(cb,content);list.appendChild(label);});
+ const complete=p[3].filter((_,j)=>state.done[`${selected}-${j}`]).length;$("dayProgress").textContent=`${complete} / ${p[3].length}`;$("dayProgressText").textContent=complete===p[3].length?"ቀኑ ተጠናቋል":"የቀኑ እድገት";
+}
+function renderAll(){renderCalendar();renderTasks();renderStats();}
+$("prevMonth").addEventListener("click",()=>{shownMonth=new Date(shownMonth.getFullYear(),shownMonth.getMonth()-1,1);renderCalendar()});
+$("nextMonth").addEventListener("click",()=>{shownMonth=new Date(shownMonth.getFullYear(),shownMonth.getMonth()+1,1);renderCalendar()});
+$("todayBtn").addEventListener("click",()=>{const diff=Math.round((new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate())-START)/DAY_MS);if(diff>=0&&diff<30){selected=diff;shownMonth=new Date(dateAt(diff).getFullYear(),dateAt(diff).getMonth(),1);}else{selected=0;shownMonth=new Date(START.getFullYear(),START.getMonth(),1);}renderAll();});
+$("resetBtn").addEventListener("click",()=>{if(confirm("ሁሉንም የተመለከቱ ተግባራት ማጥፋት ትፈልጋለህ? ይህ አይመለስም።")){state.done={};save();renderAll();toast("የተግባር ምልክቶች ተሰርዘዋል።");}});
+$("rangeText").textContent=`${fmt(START,{month:"short",day:"numeric"})} – ${fmt(dateAt(29),{month:"short",day:"numeric",year:"numeric"})}`;
+renderAll();
+</script>
+</body>
+</html>
